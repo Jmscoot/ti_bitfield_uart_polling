@@ -50,12 +50,15 @@ Uint32 GetLspclk(void)
 void ScibInit(void)
 {
     EALLOW;
-    CpuSysRegs.PCLKCR7.bit.SCI_B     = 1;   // SCI-B 클럭 공급
+    // SCI패리패럴 clock config
+    CpuSysRegs.PCLKCR7.bit.SCI_B     = 1;   
 
+    // GPIO configuration
     GpioCtrlRegs.GPAGMUX2.bit.GPIO18 = 0;   // GPIO18 = SCITXDB (mux 2)
     GpioCtrlRegs.GPAMUX2.bit.GPIO18  = 2;
     GpioCtrlRegs.GPAGMUX2.bit.GPIO19 = 0;   // GPIO19 = SCIRXDB (mux 2)
     GpioCtrlRegs.GPAMUX2.bit.GPIO19  = 2;
+    
     GpioCtrlRegs.GPAPUD.bit.GPIO19   = 1;   // RX 풀업 해제
     GpioCtrlRegs.GPAQSEL2.bit.GPIO19 = 3;   // RX 비동기 입력
     EDIS;
@@ -92,25 +95,27 @@ void ScibPutChar(Uint16 c)
     ScibRegs.SCITXBUF.all = c & 0x00FFU;
 }
 
-//
-// 문자열 송신
-//
+
 void ScibPutStr(const char *s)
 {
+
     while(*s) ScibPutChar((Uint16)*s++);
 }
 
-//
-// 한 문자 수신 (블로킹)
-//
+
 Uint16 ScibGetChar(void)
 {
-    if(ScibRegs.SCIRXST.bit.RXERROR)        // 에러 시 SWRESET 토글로 복구
+     // 에러 시 SWRESET 토글로 복구
+    if(ScibRegs.SCIRXST.bit.RXERROR)       
     {
         ScibRegs.SCICTL1.bit.SWRESET = 0;
         ScibRegs.SCICTL1.bit.SWRESET = 1;
     }
+
+    // 수신 버퍼에 읽을 문자가 있을 때까지 블로킹
     while(ScibRegs.SCIRXST.bit.RXRDY == 0);
+
+    // 수신 버퍼에 저장된 16bit를 return 
     return ScibRegs.SCIRXBUF.all & 0x00FFU;
 }
 
@@ -119,14 +124,10 @@ Uint16 ScibGetChar(void)
 //
 void main(void)
 {
+    // 1. sysclock configuration
     InitSysCtrl();
 
-    DINT;
-    InitPieCtrl();
-    IER = 0;
-    IFR = 0;
-    InitPieVectTable();
-
+    // 2, SCI configuration
     ScibInit();
 
     ScibPutStr("\r\nSCI-B ready\r\n");

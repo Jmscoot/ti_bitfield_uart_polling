@@ -1,10 +1,10 @@
 ******************************************************************************
              TMS320C2000 Linker PC v25.11.1                    
 ******************************************************************************
->> Linked Tue Sep 22 18:15:15 2026
+>> Linked Tue Sep 22 18:56:16 2026
 
 OUTPUT FILE NAME:   <bitfield_uart.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 00008604
+ENTRY POINT SYMBOL: "_c_int00"  address: 000085f7
 
 
 MEMORY CONFIGURATION
@@ -14,7 +14,7 @@ MEMORY CONFIGURATION
 PAGE 0:
   BEGIN                 00000000   00000002  00000002  00000000  RWIX
   RAMM0                 00000123   000002dd  00000031  000002ac  RWIX
-  RAMLS0                00008000   00000800  00000706  000000fa  RWIX
+  RAMLS0                00008000   00000800  000006ab  00000155  RWIX
   RAMLS1                00008800   00000800  00000000  00000800  RWIX
   RAMLS2                00009000   00000800  00000000  00000800  RWIX
   RAMLS3                00009800   00000800  00000000  00000800  RWIX
@@ -124,7 +124,7 @@ PAGE 1:
   OUTPUTXBAR            00007a80   00000040  00000040  00000000  RWIX
   GPIOCTRL              00007c00   00000180  00000180  00000000  RWIX
   GPIODATA              00007f00   00000030  00000030  00000000  RWIX
-  RAMLS5                0000a800   00000800  00000376  0000048a  RWIX
+  RAMLS5                0000a800   00000800  000001b6  0000064a  RWIX
   RAMD1                 0000b800   00000800  00000000  00000800  RWIX
   RAMGS0                0000c000   00001000  00000000  00001000  RWIX
   RAMGS1                0000d000   00001000  00000000  00001000  RWIX
@@ -531,20 +531,19 @@ GpioDataRegsFile
 *          1    00007f00    00000030     UNINITIALIZED
                   00007f00    00000030     F2837xD_GlobalVariableDefs.obj (GpioDataRegsFile)
 
-.econst    1    0000a800    00000362     
-                  0000a800    000001c0     F2837xD_PieVect.obj (.econst:_PieVectTableInit)
-                  0000a9c0    000000c2     driverlib_coff.lib : sysctl.obj (.econst:.string)
-                  0000aa82    000000bc                        : gpio.obj (.econst:.string)
-                  0000ab3e    00000013     device.obj (.econst:.string)
-                  0000ab51    00000001     --HOLE-- [fill = 0]
-                  0000ab52    00000010     empty_bitfield_driverlib_main.obj (.econst:.string)
+.econst    1    0000a800    000001a2     
+                  0000a800    000000c2     driverlib_coff.lib : sysctl.obj (.econst:.string)
+                  0000a8c2    000000bc                        : gpio.obj (.econst:.string)
+                  0000a97e    00000013     device.obj (.econst:.string)
+                  0000a991    00000001     --HOLE-- [fill = 0]
+                  0000a992    00000010     empty_bitfield_driverlib_main.obj (.econst:.string)
 
-.ebss      1    0000ab62    00000014     UNINITIALIZED
-                  0000ab62    00000006     device.obj (.ebss)
-                  0000ab68    00000006     rts2800_fpu32.lib : exit.c.obj (.ebss)
-                  0000ab6e    00000004     empty_bitfield_driverlib_main.obj (.ebss)
-                  0000ab72    00000002     rts2800_fpu32.lib : _lock.c.obj (.ebss:__lock)
-                  0000ab74    00000002                       : _lock.c.obj (.ebss:__unlock)
+.ebss      1    0000a9a2    00000014     UNINITIALIZED
+                  0000a9a2    00000006     device.obj (.ebss)
+                  0000a9a8    00000006     rts2800_fpu32.lib : exit.c.obj (.ebss)
+                  0000a9ae    00000004     empty_bitfield_driverlib_main.obj (.ebss)
+                  0000a9b2    00000002     rts2800_fpu32.lib : _lock.c.obj (.ebss:__lock)
+                  0000a9b4    00000002                       : _lock.c.obj (.ebss:__unlock)
 
 .TI.ramfunc 
 *          0    0000014c    00000008     
@@ -671,17 +670,15 @@ UidRegsFile
 *          1    000703c0    00000010     UNINITIALIZED
                   000703c0    00000010     F2837xD_GlobalVariableDefs.obj (UidRegsFile)
 
-.text.1    0    00008000    00000706     
+.text.1    0    00008000    000006ab     
                   00008000    000004ab     F2837xD_SysCtrl.obj (.text)
-                  000084ab    000000d1     empty_bitfield_driverlib_main.obj (.text)
-                  0000857c    00000088     rts2800_fpu32.lib : fs_div28.asm.obj (.text)
-                  00008604    00000056                       : boot28.asm.obj (.text)
-                  0000865a    00000028     F2837xD_PieCtrl.obj (.text)
-                  00008682    00000026     F2837xD_PieVect.obj (.text)
-                  000086a8    00000024     rts2800_fpu32.lib : cpy_tbl.c.obj (.text)
-                  000086cc    00000020                       : memcpy.c.obj (.text)
-                  000086ec    00000012                       : args_main.c.obj (.text)
-                  000086fe    00000008     F2837xD_CodeStartBranch.obj (.text)
+                  000084ab    000000c4     empty_bitfield_driverlib_main.obj (.text)
+                  0000856f    00000088     rts2800_fpu32.lib : fs_div28.asm.obj (.text)
+                  000085f7    00000056                       : boot28.asm.obj (.text)
+                  0000864d    00000024                       : cpy_tbl.c.obj (.text)
+                  00008671    00000020                       : memcpy.c.obj (.text)
+                  00008691    00000012                       : args_main.c.obj (.text)
+                  000086a3    00000008     F2837xD_CodeStartBranch.obj (.text)
 
 .text.2    0    0000b000    000007fe     
                   0000b000    00000585     F2837xD_DefaultISR.obj (.text:retain)
@@ -700,13 +697,11 @@ MODULE SUMMARY
        F2837xD_DefaultISR.obj              1413   0                  0                 
        F2837xD_SysCtrl.obj                 1195   0                  0                 
        F2837xD_Gpio.obj                    580    0                  0                 
-       F2837xD_PieVect.obj                 38     448                0                 
-       empty_bitfield_driverlib_main.obj   209    16                 4                 
-       F2837xD_PieCtrl.obj                 40     0                  0                 
+       empty_bitfield_driverlib_main.obj   196    16                 4                 
        F2837xD_CodeStartBranch.obj         10     0                  0                 
        F2837xD_usDelay.obj                 4      0                  0                 
     +--+-----------------------------------+------+------------------+--------------------+
-       Total:                              3489   464                9874              
+       Total:                              3398   16                 9874              
                                                                                        
     .\device\
        device.obj                          0      34                 6                 
@@ -734,7 +729,7 @@ MODULE SUMMARY
                                                                                        
        Stack:                              0      0                  256               
     +--+-----------------------------------+------+------------------+--------------------+
-       Grand Total:                        3854   904                10146             
+       Grand Total:                        3763   456                10146             
 
 
 GLOBAL DATA SYMBOLS: SORTED BY DATA PAGE
@@ -893,18 +888,16 @@ address     data page           name
 
 00007f00     1fc (00007f00)     _GpioDataRegs
 
-0000a800     2a0 (0000a800)     _PieVectTableInit
-
-0000ab62     2ad (0000ab40)     _Example_Result
-0000ab64     2ad (0000ab40)     _Example_PassCount
-0000ab66     2ad (0000ab40)     _Example_Fail
-0000ab68     2ad (0000ab40)     ___TI_enable_exit_profile_output
-0000ab6a     2ad (0000ab40)     ___TI_cleanup_ptr
-0000ab6c     2ad (0000ab40)     ___TI_dtors_ptr
-0000ab6e     2ad (0000ab40)     _g_brr
-0000ab70     2ad (0000ab40)     _g_lspclk
-0000ab72     2ad (0000ab40)     __lock
-0000ab74     2ad (0000ab40)     __unlock
+0000a9a2     2a6 (0000a980)     _Example_Result
+0000a9a4     2a6 (0000a980)     _Example_PassCount
+0000a9a6     2a6 (0000a980)     _Example_Fail
+0000a9a8     2a6 (0000a980)     ___TI_enable_exit_profile_output
+0000a9aa     2a6 (0000a980)     ___TI_cleanup_ptr
+0000a9ac     2a6 (0000a980)     ___TI_dtors_ptr
+0000a9ae     2a6 (0000a980)     _g_brr
+0000a9b0     2a6 (0000a980)     _g_lspclk
+0000a9b2     2a6 (0000a980)     __lock
+0000a9b4     2a6 (0000a980)     __unlock
 
 00047000    11c0 (00047000)     _Emif1Regs
 
@@ -956,7 +949,7 @@ page  address   name
 ----  -------   ----                                  
 abs   ffffffff  .text                                 
 0     0000b7c9  C$$EXIT                               
-0     0000857c  FS$$DIV                               
+0     0000856f  FS$$DIV                               
 0     0000b0be  _ADCA1_ISR                            
 0     0000b33e  _ADCA2_ISR                            
 0     0000b348  _ADCA3_ISR                            
@@ -1116,10 +1109,9 @@ abs   ffffffff  .text
 1     00047000  _Emif1Regs                            
 1     0005f4a0  _Emif2ConfigRegs                      
 1     00047800  _Emif2Regs                            
-0     00008679  _EnableInterrupts                     
-1     0000ab66  _Example_Fail                         
-1     0000ab64  _Example_PassCount                    
-1     0000ab62  _Example_Result                       
+1     0000a9a6  _Example_Fail                         
+1     0000a9a4  _Example_PassCount                    
+1     0000a9a2  _Example_Result                       
 0     0000014c  _F28x_usDelay                         
 0     0000b528  _FLASH_CORRECTABLE_ERROR_ISR          
 0     0000b3fc  _FPU_OVERFLOW_ISR                     
@@ -1160,8 +1152,6 @@ abs   ffffffff  .text
 0     000082e0  _InitAuxPll                           
 0     0000b585  _InitGpio                             
 0     00008020  _InitPeripheralClocks                 
-0     0000865a  _InitPieCtrl                          
-0     00008682  _InitPieVectTable                     
 0     00008000  _InitSysCtrl                          
 0     000080f1  _InitSysPll                           
 1     00007900  _InputXbarRegs                        
@@ -1181,7 +1171,6 @@ abs   ffffffff  .text
 0     0000b564  _PIE_RESERVED_ISR                     
 1     00000ce0  _PieCtrlRegs                          
 1     00000d00  _PieVectTable                         
-1     0000a800  _PieVectTableInit                     
 0     0000b532  _RAM_ACCESS_VIOLATION_ISR             
 0     0000b51e  _RAM_CORRECTABLE_ERROR_ISR            
 0     0000b01e  _RTOS_ISR                             
@@ -1257,9 +1246,9 @@ abs   ffffffff  .text
 1     00007070  _XintRegs                             
 1     00000500  __STACK_END                           
 abs   00000100  __STACK_SIZE                          
-1     0000ab6a  ___TI_cleanup_ptr                     
-1     0000ab6c  ___TI_dtors_ptr                       
-1     0000ab68  ___TI_enable_exit_profile_output      
+1     0000a9aa  ___TI_cleanup_ptr                     
+1     0000a9ac  ___TI_dtors_ptr                       
+1     0000a9a8  ___TI_enable_exit_profile_output      
 abs   ffffffff  ___TI_pprof_out_hndl                  
 abs   ffffffff  ___TI_prof_data_size                  
 abs   ffffffff  ___TI_prof_data_start                 
@@ -1269,23 +1258,23 @@ abs   ffffffff  ___c_args__
 abs   ffffffff  ___etext__                            
 abs   ffffffff  ___pinit__                            
 abs   ffffffff  ___text__                             
-0     000086ec  __args_main                           
-1     0000ab72  __lock                                
+0     00008691  __args_main                           
+1     0000a9b2  __lock                                
 0     0000b7fa  __nop                                 
 0     0000b7f6  __register_lock                       
 0     0000b7f2  __register_unlock                     
 1     00000400  __stack                               
 0     0000b7fd  __system_post_cinit                   
 0     0000b7fb  __system_pre_init                     
-1     0000ab74  __unlock                              
+1     0000a9b4  __unlock                              
 0     0000b7c9  _abort                                
-0     00008604  _c_int00                              
-0     000086a8  _copy_in                              
+0     000085f7  _c_int00                              
+0     0000864d  _copy_in                              
 0     0000b7cb  _exit                                 
-1     0000ab6e  _g_brr                                
-1     0000ab70  _g_lspclk                             
+1     0000a9ae  _g_brr                                
+1     0000a9b0  _g_lspclk                             
 0     0000855a  _main                                 
-0     000086cc  _memcpy                               
+0     00008671  _memcpy                               
 abs   ffffffff  binit                                 
 0     00000123  cinit                                 
 0     00000000  code_start                            
@@ -1329,14 +1318,11 @@ page  address   name
 0     00008541  _ScibPutStr                           
 0     0000854d  _ScibGetChar                          
 0     0000855a  _main                                 
-0     0000857c  FS$$DIV                               
-0     00008604  _c_int00                              
-0     0000865a  _InitPieCtrl                          
-0     00008679  _EnableInterrupts                     
-0     00008682  _InitPieVectTable                     
-0     000086a8  _copy_in                              
-0     000086cc  _memcpy                               
-0     000086ec  __args_main                           
+0     0000856f  FS$$DIV                               
+0     000085f7  _c_int00                              
+0     0000864d  _copy_in                              
+0     00008671  _memcpy                               
+0     00008691  __args_main                           
 0     0000b000  _TIMER1_ISR                           
 0     0000b00a  _TIMER2_ISR                           
 0     0000b014  _DATALOG_ISR                          
@@ -1587,17 +1573,16 @@ page  address   name
 1     00007a80  _OutputXbarRegs                       
 1     00007c00  _GpioCtrlRegs                         
 1     00007f00  _GpioDataRegs                         
-1     0000a800  _PieVectTableInit                     
-1     0000ab62  _Example_Result                       
-1     0000ab64  _Example_PassCount                    
-1     0000ab66  _Example_Fail                         
-1     0000ab68  ___TI_enable_exit_profile_output      
-1     0000ab6a  ___TI_cleanup_ptr                     
-1     0000ab6c  ___TI_dtors_ptr                       
-1     0000ab6e  _g_brr                                
-1     0000ab70  _g_lspclk                             
-1     0000ab72  __lock                                
-1     0000ab74  __unlock                              
+1     0000a9a2  _Example_Result                       
+1     0000a9a4  _Example_PassCount                    
+1     0000a9a6  _Example_Fail                         
+1     0000a9a8  ___TI_enable_exit_profile_output      
+1     0000a9aa  ___TI_cleanup_ptr                     
+1     0000a9ac  ___TI_dtors_ptr                       
+1     0000a9ae  _g_brr                                
+1     0000a9b0  _g_lspclk                             
+1     0000a9b2  __lock                                
+1     0000a9b4  __unlock                              
 1     00047000  _Emif1Regs                            
 1     00047800  _Emif2Regs                            
 1     00048000  _CanaRegs                             
@@ -1635,4 +1620,4 @@ abs   ffffffff  binit
 abs   ffffffff  etext                                 
 abs   ffffffff  pinit                                 
 
-[337 symbols]
+[333 symbols]
